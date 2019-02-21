@@ -37,46 +37,46 @@
     "devDependencies": {
         "@simplrjs/test-generator-cli": "^0.1.3",
         "@types/archy": "0.0.31",
-        "@types/fs-extra": "^5.0.1",
-        "@types/jest": "^22.2.2",
-        "@types/node": "^9.6.1",
-        "@types/node-sass": "3.10.32",
+        "@types/fs-extra": "^5.0.5",
+        "@types/jest": "^24.0.6",
+        "@types/node": "^11.9.4",
+        "@types/node-sass": "4.11.0",
         "@types/promise": "^7.1.30",
-        "@types/yargs": "11.0.0",
-        "jest": "^22.4.3",
+        "@types/yargs": "12.0.9",
+        "jest": "^24.1.0",
         "jest-junit": "^6.3.0",
-        "simplr-tslint": "1.0.0-alpha.5",
-        "ts-jest": "^22.4.2",
-        "ts-node": "^5.0.1",
-        "tslint": "^5.9.1",
-        "typescript": "^2.8.1"
+        "simplr-tslint": "1.0.0-alpha.14",
+        "ts-jest": "^24.0.0",
+        "ts-node": "^8.0.2",
+        "tslint": "^5.12.1",
+        "typescript": "^3.3.3"
     },
     "bin": {
         "scss-bundle": "./dist/bundle-cli.js"
     },
     "dependencies": {
         "@types/chokidar": "^1.7.5",
-        "@types/lodash.debounce": "^4.0.4",
+        "@types/lodash.debounce": "^4.0.5",
         "archy": "^1.0.0",
-        "chokidar": "^2.0.4",
-        "fs-extra": "^5.0.0",
-        "globs": "^0.1.3",
+        "chokidar": "^2.1.2",
+        "fs-extra": "^7.0.1",
+        "globs": "^0.1.4",
         "lodash.debounce": "^4.0.8",
-        "node-sass": "^4.10.0",
-        "pretty-bytes": "^4.0.2",
-        "promise": "^8.0.1",
-        "yargs": "^11.0.0"
+        "node-sass": "^4.11.0",
+        "pretty-bytes": "^5.1.0",
+        "promise": "^8.0.2",
+        "yargs": "^13.2.1"
     },
     "jest": {
         "collectCoverage": true,
         "reporters": [
             "jest-junit"
         ],
-        "preset": "ts-jest/presets/default",
+        "preset": "ts-jest",
         "globals": {
             "ts-jest": {
-                "babelConfig": false,
-                "tsConfig": "tests/tsconfig.json"
+                "tsConfig": "tests/tsconfig.json",
+                "babelConfig": true
             }
         },
         "testRegex": "/__tests__/.*\\.(test|spec).(ts|tsx|js)$",
@@ -88,9 +88,9 @@
             "/tests/"
         ],
         "moduleFileExtensions": [
+            "js",
             "ts",
-            "tsx",
-            "js"
+            "tsx"
         ],
         "verbose": true
     }
