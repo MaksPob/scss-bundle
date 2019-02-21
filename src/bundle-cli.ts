@@ -9,19 +9,12 @@ import * as Contracts from "./contracts";
 import { argv } from "./arguments";
 import { Launcher } from "./launcher";
 
-function resolveVerbosity(verbosity: any): number {
-    // Convert given value to an appropriate Verbosity enum value.
-    // 'as any as number' is used because TypeScript thinks
-    //  that we cast string to number, even though we get a number there
-    return (Contracts.Verbosity[verbosity] as any) as number;
-}
-
 function argumentsToConfig(argumentValues: Contracts.ArgumentsValues): Contracts.Config {
     return {
         Destination: argumentValues.dest,
         Entry: argumentValues.entry,
         DedupeGlobs: argumentValues.dedupe,
-        Verbosity: resolveVerbosity(argumentValues.verbosity),
+        Verbosity: argumentValues.verbosity,
         IncludePaths: argumentValues.includePaths,
         IgnoredImports: argumentValues.ignoredImports,
         ProjectDirectory: path.resolve(process.cwd(), argumentValues.project)

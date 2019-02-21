@@ -11,7 +11,9 @@ for (const key in Contracts.Verbosity) {
 
 const DEDUPE_KEY = "dedupe";
 
-export const argv = yargs
+const argsBuild = yargs as yargs.Argv<Contracts.ArgumentsCli>;
+
+const cliArguments = argsBuild
     .help("h", "Show help.")
     .alias("h", "help")
     .version()
@@ -55,4 +57,11 @@ export const argv = yargs
     .array(DEDUPE_KEY)
     .default(DEDUPE_KEY, [], "[]")
     .usage("Usage: scss-bundle [options]")
-    .string(["c", "e", "d"]).argv as Contracts.ArgumentsValues;
+    .string(["c", "e", "d"]).argv;
+
+export const argv: Contracts.ArgumentsValues = {
+    ...cliArguments,
+    verbosity: Contracts.Verbosity[cliArguments.verbosity],
+    includePaths: cliArguments.includePaths.filter<string>((x): x is string => typeof x === "string"),
+    ignoredImports: cliArguments.ignoredImports.filter<string>((x): x is string => typeof x === "string")
+};

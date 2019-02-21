@@ -44,7 +44,7 @@ export class Bundler {
     // Imports dictionary by file
     private importsByFile: { [key: string]: BundleResult[] } = {};
 
-    constructor(private fileRegistry: FileRegistry = {}, private readonly projectDirectory?: string) { }
+    constructor(private fileRegistry: FileRegistry = {}, private readonly projectDirectory?: string) {}
 
     public async BundleAll(files: string[], dedupeGlobs: string[] = []): Promise<BundleResult[]> {
         const resultsPromises = files.map(async file => this.Bundle(file, dedupeGlobs));
@@ -82,7 +82,7 @@ export class Bundler {
     }
 
     private isExtensionExists(importName: string): boolean {
-        return ALLOWED_FILE_EXTENSIONS.some((extension => importName.indexOf(extension) !== -1));
+        return ALLOWED_FILE_EXTENSIONS.some(extension => importName.indexOf(extension) !== -1);
     }
     private async bundle(
         filePath: string,
@@ -162,7 +162,7 @@ export class Bundler {
                     filePath: imp.fullPath,
                     tilde: imp.tilde,
                     found: false,
-                    ignored:  imp.ignored
+                    ignored: imp.ignored
                 };
             } else if (this.fileRegistry[imp.fullPath] == null) {
                 // If file is not yet in the registry
@@ -211,7 +211,6 @@ export class Bundler {
                     contentToReplace = imp.importString;
                 }
             } else {
-
                 // Take contentToReplace from the fileRegistry
                 contentToReplace = this.fileRegistry[imp.fullPath];
                 // If the content is not found
@@ -231,7 +230,6 @@ export class Bundler {
                         currentImport.deduped = true;
                     }
                 }
-
             }
             // Finally, replace import string with bundled content or a debug message
             content = this.replaceLastOccurance(content, imp.importString, contentToReplace);
@@ -266,7 +264,7 @@ export class Bundler {
         return text;
     }
 
-    private async resolveImport(importData, includePaths): Promise<any> {
+    private async resolveImport(importData: ImportData, includePaths: string[]): Promise<ImportData> {
         try {
             await fs.access(importData.fullPath);
             importData.found = true;

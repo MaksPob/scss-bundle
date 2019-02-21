@@ -72,13 +72,11 @@
         "reporters": [
             "jest-junit"
         ],
-        "transform": {
-            ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-        },
+        "preset": "ts-jest/presets/default",
         "globals": {
             "ts-jest": {
-                "skipBabel": true,
-                "tsConfigFile": "tests/tsconfig.json"
+                "babelConfig": false,
+                "tsConfig": "tests/tsconfig.json"
             }
         },
         "testRegex": "/__tests__/.*\\.(test|spec).(ts|tsx|js)$",

@@ -11,9 +11,9 @@ export interface Config {
 export declare enum Verbosity {
     None = 0,
     Errors = 8,
-    Verbose = 256,
+    Verbose = 256
 }
-export interface ArgumentsValues extends yargs.Arguments {
+export interface ArgumentsCli {
     config?: string;
     entry: string;
     dest: string;
@@ -24,3 +24,6 @@ export interface ArgumentsValues extends yargs.Arguments {
     ignoredImports?: string[];
     project?: string;
 }
+export declare type ArgumentsValues = {
+    [key in keyof yargs.Arguments<ArgumentsCli>]: yargs.Arguments<ArgumentsCli>[key];
+};
